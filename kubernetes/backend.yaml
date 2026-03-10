@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: madhupdevops/wanderlust-backend-beta:v2.1.0
+          image: bomeravi/backend-wanderlust:latest
           ports:
             - containerPort: 8080
 ---
@@ -35,4 +35,4 @@ spec:
     - port: 8080
       targetPort: 8080
       protocol: TCP
-      nodePort: 31100
+      # nodePort: 31100
