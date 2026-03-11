@@ -6,7 +6,15 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
+
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+
+    # Websocket support (important for Vite HMR)
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+
+    # Prevent large bundle issues
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
 
 spec:
   tls:
