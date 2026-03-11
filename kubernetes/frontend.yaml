@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: bomeravi/frontend-wanderlust:latest
+          image: bomeravi/frontend-wanderlust:v1.0.2
           ports:
             - containerPort: 5173
 ---

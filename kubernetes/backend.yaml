@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: bomeravi/backend-wanderlust:latest
+          image: bomeravi/backend-wanderlust:v1.0.2
           ports:
             - containerPort: 8080
 ---
