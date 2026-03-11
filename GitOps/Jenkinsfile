@@ -1,6 +1,6 @@
 @Library('Shared') _
 pipeline {
-    agent {label 'Node'}
+    agent {label 'worker'}
     
     parameters {
         string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Frontend Docker tag of the image built by the CI job')
@@ -19,7 +19,7 @@ pipeline {
         stage('Git: Code Checkout') {
             steps {
                 script{
-                    code_checkout("https://github.com/DevMadhup/wanderlust.git","devops")
+                    code_checkout("https://github.com/bomeravi/wanderlust.git","devops")
                 }
             }
         }
@@ -56,10 +56,12 @@ pipeline {
         stage("Git: Code update and push to GitHub"){
             steps{
                 script{
-                    withCredentials([gitUsernamePassword(credentialsId: 'Github-cred', gitToolName: 'Default')]) {
+                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
                         sh '''
                         echo "Checking repository status: "
                         git status
+                        git config --global user.email "you@example.com"
+                        git config --global user.name "Your Name"
                         
                         echo "Adding changes to git: "
                         git add .
@@ -68,7 +70,7 @@ pipeline {
                         git commit -m "Updated environment variables"
                         
                         echo "Pushing changes to github: "
-                        git push https://github.com/DevMadhup/wanderlust.git devops
+                        git push https://github.com/bomeravi/wanderlust.git devops
                     '''
                     }
                 }
