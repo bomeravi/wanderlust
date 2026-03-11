@@ -4,8 +4,8 @@
 INSTANCE_ID="i-0c7c9d3d4e8c3a012"
 
 # Retrieve the public IP address of the specified EC2 instance
-ipv4_address=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
-
+# ipv4_address=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+ipv4_address="wanderlust-frontend.digi.saroj.name.np"
 # Initializing variables
 file_to_find="../frontend/.env.docker"
 alreadyUpdate=$(cat ../frontend/.env.docker)
